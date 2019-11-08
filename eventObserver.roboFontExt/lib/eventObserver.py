@@ -18,7 +18,7 @@ class Observer(BaseWindowController):
 
     def __init__(self):
 
-        self.w = Window((400, 400), "mojo.event observer", minSize=(200, 200))
+        self.w = FloatingWindow((400, 400), "mojo.event observer", minSize=(200, 200))
         self.w.list = List((10, 10, 200, -40), [], selectionCallback=self.listSelection)
         self.w.info = TextEditor((220, 10, -10, -40), readOnly=True)
         self.w.ignoreText = TextBox((10, -30, 100, 22), "Ignore:")
