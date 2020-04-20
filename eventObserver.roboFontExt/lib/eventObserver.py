@@ -43,7 +43,7 @@ class Observer(BaseWindowController):
             for key in keys:
                 attributedString = NSMutableAttributedString.alloc().initWithString_attributes_(key, keyAttributes)
                 txt.appendAttributedString_(attributedString)
-                value = "\n%s\n\n" % notification[key]
+                value = "\n%s\n\n" % str(notification[key])
                 attributedString = NSMutableAttributedString.alloc().initWithString_attributes_(value, valueAttributes)
                 txt.appendAttributedString_(attributedString)
             self.w.info.getNSTextView().textStorage().setAttributedString_(txt)
