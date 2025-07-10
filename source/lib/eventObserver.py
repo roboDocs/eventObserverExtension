@@ -55,11 +55,8 @@ class Observer(BaseWindowController):
 
     def checkCanIgnore(self, notification, toIgnore):
         for item in toIgnore:
-            if notification == item:
+            if notification == item or fnmatch.fnmatch(notification, item):
                 return True
-            else:
-                if fnmatch.fnmatch(notification, item):
-                    return True
         return False
 
     def notification(self, notification):
