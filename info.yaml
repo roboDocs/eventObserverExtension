@@ -3,7 +3,7 @@ developer: Frederik Berlaen
 developerURL: http://typemytype.com/
 launchAtStartUp: false
 mainScript: ''
-version: '0.3'
+version: '0.31'
 addToMenu:
 - path: eventObserver.py
   preferredName: eventObserver

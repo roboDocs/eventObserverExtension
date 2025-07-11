@@ -2,6 +2,7 @@ from vanilla import *
 from AppKit import *
 from defconAppKit.windows.baseWindow import BaseWindowController
 from mojo.events import addObserver, removeObserver
+import fnmatch
 
 class NotificationItem(object):
 
@@ -52,8 +53,17 @@ class Observer(BaseWindowController):
         self.w.list.set([])
         self.w.info.set("")
 
+    def checkCanIgnore(self, notification, toIgnore):
+        for item in toIgnore:
+            if notification == item or fnmatch.fnmatch(notification, item):
+                return True
+        return False
+
     def notification(self, notification):
-        if notification["notificationName"] in self.w.ignore.get().split(" "):
+        if self.checkCanIgnore(
+            notification["notificationName"],
+            self.w.ignore.get().split(" ")
+            ):
             return
         self.w.list.append(NotificationItem(notification))
         self.w.list.getNSTableView().scrollRowToVisible_(len(self.w.list) - 1)
